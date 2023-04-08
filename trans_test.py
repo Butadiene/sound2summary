@@ -11,7 +11,7 @@ split_size = 2048
 def split_text(text, size):
     split_texts = []
     current_chunk = ''
-    for sentence in re.split('(?<=[。?！])', text):
+    for sentence in re.split('(?<=[。.?！])', text):
         if len(current_chunk) + len(sentence) <= size:
             current_chunk += sentence
         else:
@@ -23,6 +23,7 @@ def split_text(text, size):
 
 def summarize(conversation, text):
     conversation[1]['content'] = text
+    # print(conversation)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=conversation,
@@ -53,7 +54,6 @@ def process_folder(folder_path, initial_prompt):
     conversation = [{"role": "system", "content": initial_prompt}, {"role": "user", "content": ""}, {"role": "assistant", "content": ""}]
     for i, part in enumerate(split_texts):
         summarized_part = summarize(conversation, part)
-        # print(conversation)
         summarized_texts.append(summarized_part)
         print(f"{i + 1}/{len(split_texts)}分割目が要約されました。")
 
