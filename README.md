@@ -26,6 +26,7 @@ First, put sounds file on sounds directory (mp3 file)
 Second, edit run.py
 
 you have to edit api key, and prompt
+（プロンプトは2種類あります。文字起こし用と要約用です。より簡潔に、ただしより状況がわかりやすいようにプロンプトを書けば書くほど文字起こしの精度や、要約の精度があがります。）
 
 Finally, run run.py
 
