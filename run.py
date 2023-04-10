@@ -9,5 +9,5 @@ prompt_for_sound2text = "この音声はAという分野についての授業を
 prompt_for_summarization = "この文章は、Aという分野についての授業をWhisperを用いて文字起こしを行ったものです。講義の内容を要約してください。"
 
 div_sound()
-sound2text(prompt_for_sound2text)
-trans_test(prompt_for_summarization)
+sound2text(prompt_for_sound2text, language="en")  # "ja": Japanease, "en":English
+trans_test(prompt_for_summarization, max_tokens=300)
