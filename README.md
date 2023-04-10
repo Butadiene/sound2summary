@@ -34,17 +34,16 @@ You get result at sound2summary/mp3_sounds_split/[sounds flile name]/summarized_
 
 # Options
 
-In sound2text, we assumption that conversation is **Japanese**
+In sound2text, we assumption that conversation is **Japanese
 
-If your sounds file is copmposed of other language, you edit sound2text.py, line 19.
+if you want to transcript english sounds, please edit run.py, language option
+if you want to customize output length, please edit run.py, max token option
 
-```
-language = "ja",
+~~If your sounds file is copmposed of other language, you edit sound2text.py, line 19.~~
 
-```
+~~language = "ja",~~
 
-Similarly, you want to edit length of summary text, you edit trans_test.py, line 29.
-```
-max_tokens=150,
 
-```
+~~Similarly, you want to edit length of summary text, you edit trans_test.py, line 29.~~
+
+~~max_tokens=150,~~
