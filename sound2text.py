@@ -5,7 +5,8 @@ from pydub import AudioSegment
 # APIキーを設定
 # openai.api_key = ""
 
-def transcribe_audio(input_path, initial_prompt=None):
+
+def transcribe_audio(input_path, initial_prompt=None, language="ja"):
     # 音声ファイルを変換
     audio = AudioSegment.from_file(input_path, format="mp3")
     audio = audio.set_channels(1).set_frame_rate(16000)  # モノラル、16000Hzに変換
@@ -16,13 +17,14 @@ def transcribe_audio(input_path, initial_prompt=None):
         transcript_data = openai.Audio.transcribe(
             file=f,
             model="whisper-1",
-            language = "ja",
-            prompt = initial_prompt
+            language=language,
+            prompt=initial_prompt
         )
 
     return transcript_data["text"]
 
-def process_folder(folder_path, initial_prompt):
+
+def process_folder(folder_path, initial_prompt, language):
     output_file_path = os.path.join(folder_path, "transcription.txt")
 
     with open(output_file_path, "w") as output_file:
@@ -37,15 +39,16 @@ def process_folder(folder_path, initial_prompt):
                         lines = f.readlines()
                         current_prompt = "".join(lines[-3:])  # 最後の3行をプロンプトとして使用
 
-                transcription = transcribe_audio(input_path, current_prompt)
+                transcription = transcribe_audio(input_path, current_prompt, language)
                 output_file.write(transcription)
                 print(f"文字起こし完了: {input_path}")
 
-def sound2text(prompt):
+
+def sound2text(prompt, language):
     base_folder = "mp3_sounds_split"
     initial_prompt = prompt
-    
+
     for folder in os.listdir(base_folder):
         folder_path = os.path.join(base_folder, folder)
         if os.path.isdir(folder_path):
-            process_folder(folder_path, initial_prompt)
+            process_folder(folder_path, initial_prompt, language)
