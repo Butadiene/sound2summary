@@ -74,9 +74,9 @@ def process_folder(folder_path, initial_prompt, max_tokens):
     lines = [line.rstrip('\n') for line in lines]
 
     # ファイルに書き込みなおします
-    with open(output_filename, 'w') as f:
-        for line in lines:
-            f.write(line)
+    # with open(output_filename, 'w') as f:
+        # for line in lines:
+            # f.write(line)
 
     print(f"要約が完了しました。出力ファイル名: {output_filename}")
 
