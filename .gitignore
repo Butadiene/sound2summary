@@ -1,2 +1,6 @@
 /.venv/
 /__pycache__/
+/sounds/
+/mp3_sounds_split/
+/m4a_sounds/
+/temp.mp3
