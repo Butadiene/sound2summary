@@ -5,8 +5,8 @@ import re
 # APIキーを設定
 # openai.api_key = "
 
-# 分割サイズを設定（ここでは2048文字に設定）
-split_size = 2048
+# 分割サイズを設定（ここでは16384文字に設定）
+split_size = 16384
 
 
 def split_text(text, size):
@@ -27,7 +27,7 @@ def summarize(conversation, text, max_tokens=150):
     conversation[1]['content'] = text
     # print(conversation)
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-turbo-2024-04-09",
         messages=conversation,
         max_tokens=max_tokens,
         n=1,

@@ -6,6 +6,7 @@
 
 ### how to install
 e.g.,
+
 ```
 pip install pydub
 pip install openai
@@ -19,15 +20,18 @@ if you want to use virtual environment, you can use requirement.txt
 python3 -m pip install -r requirement.txt
 ```
 
-## how to use
+## How to use
 
-First, put sounds file on sounds directory (mp3 file)
+### First, put sounds file on sounds directory (mp3 file)
+If you have only m4a file and don't have mp3 file, you shold put m4a file on 'm4a_souds' directory and run 'convert_m4a2mp3.py'. (Zoom recoding data may be m4a format data.)
+You get result as 'sounds/hoge.mp3'.
 
-Second, edit run.py
+### Second, edit run.py
 
-you have to edit api key, and prompt
-（プロンプトは2種類あります。文字起こし用と要約用です。より簡潔に、ただしより状況がわかりやすいようにプロンプトを書けば書くほど文字起こしの精度や、要約の精度があがります。）
-（文字起こし用のプロンプトは動画の言語に合わせてください。）
+You have to edit api key, and prompt
+- apiキーがgitHub上で公開されるのを防ぐため，ignoreされた'key.json'ファイル中にapiキーを記載する方式にしています．'key_template.json'の書き方にしたがって'key.json'ファイルを作成してください．'key.json'は'run.py'と同じ階層に置いてください．
+- （プロンプトは2種類あります。文字起こし用と要約用です。より簡潔に、ただしより状況がわかりやすいようにプロンプトを書けば書くほど文字起こしの精度や、要約の精度があがります。）
+- （文字起こし用のプロンプトは動画の言語に合わせてください。）
 Finally, run run.py
 
 You get result at sound2summary/mp3_sounds_split/[sounds flile name]/summarized_minutes.txt

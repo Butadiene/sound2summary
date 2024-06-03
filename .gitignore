@@ -4,3 +4,5 @@
 /mp3_sounds_split/
 /m4a_sounds/
 /temp.mp3
+.DS_Store
+key.json
