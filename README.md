@@ -29,7 +29,7 @@ You get result as 'sounds/hoge.mp3'.
 ### Second, edit run.py
 
 You have to edit api key, and prompt
-- apiキーがgitHub上で公開されるのを防ぐため，ignoreされた'key.json'ファイル中にapiキーを記載する方式にしています．'key_template.json'の書き方にしたがって'key.json'ファイルを作成してください．
+- apiキーがgitHub上で公開されるのを防ぐため，ignoreされた'key.json'ファイル中にapiキーを記載する方式にしています．'key_template.json'の書き方にしたがって'key.json'ファイルを作成してください．'key.json'は'run.py'と同じ階層に置いてください．
 - （プロンプトは2種類あります。文字起こし用と要約用です。より簡潔に、ただしより状況がわかりやすいようにプロンプトを書けば書くほど文字起こしの精度や、要約の精度があがります。）
 - （文字起こし用のプロンプトは動画の言語に合わせてください。）
 Finally, run run.py
