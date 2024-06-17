@@ -2,9 +2,6 @@ import openai
 import os
 import re
 
-# APIキーを設定
-# openai.api_key = "
-
 # 分割サイズを設定（ここでは16384文字に設定）
 split_size = 16384
 
@@ -23,10 +20,10 @@ def split_text(text, size):
     return split_texts
 
 
-def summarize(conversation, text, max_tokens=150):
+def summarize(client, conversation, text, max_tokens=150):
     conversation[1]['content'] = text
     # print(conversation)
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4-turbo-2024-04-09",
         messages=conversation,
         max_tokens=max_tokens,
@@ -34,12 +31,12 @@ def summarize(conversation, text, max_tokens=150):
         stop=None,
         temperature=0.5,
     )
-    summarized_text = response.choices[0].message['content'].strip()
+    summarized_text = response.choices[0].message.content.strip()
     conversation[2]['content'] = summarized_text
     return summarized_text
 
 
-def process_folder(folder_path, initial_prompt, max_tokens):
+def process_folder(client,folder_path, initial_prompt, max_tokens):
     input_filename = os.path.join(folder_path, "transcription.txt")
     output_filename = os.path.join(folder_path, "summarized_minutes.txt")
 
@@ -56,7 +53,7 @@ def process_folder(folder_path, initial_prompt, max_tokens):
     summarized_texts = []
     conversation = [{"role": "system", "content": initial_prompt}, {"role": "user", "content": ""}, {"role": "assistant", "content": ""}]
     for i, part in enumerate(split_texts):
-        summarized_part = summarize(conversation, part, max_tokens)
+        summarized_part = summarize(client,conversation, part, max_tokens)
         summarized_texts.append(summarized_part)
         print(f"{i + 1}/{len(split_texts)}分割目が要約されました。")
 
@@ -81,10 +78,10 @@ def process_folder(folder_path, initial_prompt, max_tokens):
     print(f"要約が完了しました。出力ファイル名: {output_filename}")
 
 
-def trans_test(prompt, max_tokens):
+def trans_test(client,prompt, max_tokens):
     base_folder = "mp3_sounds_split"
 
     for folder in os.listdir(base_folder):
         folder_path = os.path.join(base_folder, folder)
         if os.path.isdir(folder_path):
-            process_folder(folder_path, prompt, max_tokens)
+            process_folder(client,folder_path, prompt, max_tokens)

@@ -17,10 +17,21 @@ if you want to use virtual environment, you can use requirement.txt
 (in virtual environment,)
 
 ```
-python3 -m pip install -r requirement.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ## How to use
+
+### Zero, make some directories and files
+
+run these commands at sound2summary directory
+```
+mkdir sounds
+mkdir m4a_sounds
+touch key.json
+
+```
+These directories and files have to be at sound2summary directory.
 
 ### First, put sounds file on sounds directory (mp3 file)
 If you have only m4a file and don't have mp3 file, you shold put m4a file on 'm4a_souds' directory and run 'convert_m4a2mp3.py'. (Zoom recoding data may be m4a format data.)
