@@ -1,0 +1,5 @@
+{
+    "api_key": "YOUR_API_KEY",
+    "prompt_for_soutnd2text": "音声書き起こしのためのプロンプト",
+    "prompt_for_summarization": "書き起こした文章の要約のためのプロンプト"
+}
